@@ -278,7 +278,7 @@ bool BinarySearchTree::is_empty() const
 // height
 // ---------------------------------------------------------------------------
 //
-// TODO 13: Return the height of the tree.
+// 13: Return the height of the tree.
 //
 // Height is defined as the number of edges on the longest root-to-leaf path:
 //   - Empty tree  → -1
@@ -289,25 +289,24 @@ bool BinarySearchTree::is_empty() const
 //
 int BinarySearchTree::height() const
 {
-    // Your code here
+    
 
-    return -1; // placeholder
+    return height_(root_);
 }
 
 // ---------------------------------------------------------------------------
 // height_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 14: Recursively compute the height of the subtree rooted at node.
+// 14: Recursively compute the height of the subtree rooted at node.
 //
 // - Base case: node == nullptr → return -1
 // - Otherwise: return 1 + max(height_(left), height_(right))
 //
 int BinarySearchTree::height_(Node* node) const
 {
-    // Your code here
-
-    return -1; // placeholder
+    if (!node) return -1;
+    return 1 + std::max(height_(node->left), height_(node->right));
 }
 
 // ---------------------------------------------------------------------------
