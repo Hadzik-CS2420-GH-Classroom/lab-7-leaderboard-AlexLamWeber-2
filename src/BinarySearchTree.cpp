@@ -396,26 +396,27 @@ bool BinarySearchTree::is_balanced_(Node* node) const
 // inorder
 // ---------------------------------------------------------------------------
 //
-// TODO 19: Print all values in sorted (ascending) order.
+// 19: Print all values in sorted (ascending) order.
 //
 // Hint: call inorder_(root_), then print a newline.
 //
 void BinarySearchTree::inorder() const
 {
-    // Your code here
+    inorder_(root_);
+    std::cout << std::endl;
 }
 
 // ---------------------------------------------------------------------------
 // inorder_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 20: Left → Root → Right traversal.
+//  20: Left → Root → Right traversal.
 //
 // Print node->data followed by a space.
 //
 void BinarySearchTree::inorder_(Node* node) const
 {
-    // Your code here
+    
 }
 
 // ---------------------------------------------------------------------------
