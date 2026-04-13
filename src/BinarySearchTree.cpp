@@ -313,7 +313,7 @@ int BinarySearchTree::height_(Node* node) const
 // size
 // ---------------------------------------------------------------------------
 //
-// TODO 15: Return the total number of nodes in the tree.
+// 15: Return the total number of nodes in the tree.
 //
 // Hint: delegate to size_(root_).
 //
@@ -321,30 +321,31 @@ int BinarySearchTree::size() const
 {
     // Your code here
 
-    return 0; // placeholder
+    return size_(root_);
 }
 
 // ---------------------------------------------------------------------------
 // size_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 16: Recursively count all nodes in the subtree rooted at node.
+// 16: Recursively count all nodes in the subtree rooted at node.
 //
 // - Base case: node == nullptr → return 0
 // - Otherwise: return 1 + size_(left) + size_(right)
 //
 int BinarySearchTree::size_(Node* node) const
 {
-    // Your code here
+    if (!node) return 0;
 
-    return 0; // placeholder
+
+    return 1 + size_(node->left) + size_(node->right);
 }
 
 // ---------------------------------------------------------------------------
 // is_balanced
 // ---------------------------------------------------------------------------
 //
-// TODO 17: Return true if every node in the tree has a balance factor
+// 17: Return true if every node in the tree has a balance factor
 // with absolute value <= 1.
 //
 // Balance factor for a node = height(left subtree) - height(right subtree)
@@ -355,7 +356,7 @@ bool BinarySearchTree::is_balanced() const
 {
     // Your code here
 
-    return true; // placeholder
+    return is_balanced_(root_);
 }
 
 // ---------------------------------------------------------------------------
@@ -372,9 +373,19 @@ bool BinarySearchTree::is_balanced() const
 //
 bool BinarySearchTree::is_balanced_(Node* node) const
 {
-    // Your code here
+    if (!node) return true;
 
-    return true; // placeholder
+    int left_h = height_(node->left);
+    int right_h = height_(node->right);
+
+    if (std::abs(left_h - right_h) > 1) {
+        return false; //nod is unbalanced
+    }
+    else {
+        return true;
+
+    }
+
 }
 
 // =============================================================================
