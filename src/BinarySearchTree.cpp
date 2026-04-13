@@ -410,63 +410,73 @@ void BinarySearchTree::inorder() const
 // inorder_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-//  20: Left → Root → Right traversal.
+// 20: Left → Root → Right traversal.
 //
 // Print node->data followed by a space.
 //
 void BinarySearchTree::inorder_(Node* node) const
 {
-    
+    if (!node) return;
+    inorder_(node->left);
+    std::cout << node->data << " ";
+    inorder_(node->right);
 }
 
 // ---------------------------------------------------------------------------
 // preorder
 // ---------------------------------------------------------------------------
 //
-// TODO 21: Print values in Root → Left → Right order.
+// 21: Print values in Root → Left → Right order.
 //
 // Hint: call preorder_(root_), then print a newline.
 //
 void BinarySearchTree::preorder() const
 {
-    // Your code here
+    preorder_(root_);
+    std::cout << std::endl;
 }
 
 // ---------------------------------------------------------------------------
 // preorder_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 22: Root → Left → Right traversal.
+// 22: Root → Left → Right traversal.
 //
 // Print node->data followed by a space.
 //
 void BinarySearchTree::preorder_(Node* node) const
 {
-    // Your code here
+    if (!node) return;
+    std::cout << node->data << " ";
+    preorder_(node->left);
+    preorder_(node->right);
 }
 
 // ---------------------------------------------------------------------------
 // postorder
 // ---------------------------------------------------------------------------
 //
-// TODO 23: Print values in Left → Right → Root order.
+// 23: Print values in Left → Right → Root order.
 //
 // Hint: call postorder_(root_), then print a newline.
 //
 void BinarySearchTree::postorder() const
 {
-    // Your code here
+    postorder_(root_);
+    std::cout << std::endl;
 }
 
 // ---------------------------------------------------------------------------
 // postorder_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 24: Left → Right → Root traversal.
+//  24: Left → Right → Root traversal.
 //
 // Print node->data followed by a space.
 //
 void BinarySearchTree::postorder_(Node* node) const
 {
-    // Your code here
+    postorder_(node->left);
+    postorder_(node->right);
+    std::cout << node->data << " ";
 }
