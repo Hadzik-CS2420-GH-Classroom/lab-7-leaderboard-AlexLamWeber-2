@@ -85,7 +85,7 @@ BinarySearchTree::Node* BinarySearchTree::insert_(Node* node, int value)
 // remove
 // ---------------------------------------------------------------------------
 //
-// TODO 5: Remove value from the BST. Return true if the value was found and
+// 5: Remove value from the BST. Return true if the value was found and
 // removed, false otherwise.
 //
 // Hint: create a local bool removed = false, then delegate to
@@ -94,16 +94,17 @@ BinarySearchTree::Node* BinarySearchTree::insert_(Node* node, int value)
 //
 bool BinarySearchTree::remove(int value)
 {
-    // Your code here
+    bool removed = false;
+    root_ = remove_(root_, value, removed);
 
-    return false; // placeholder
+    return removed;
 }
 
 // ---------------------------------------------------------------------------
 // remove_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 6: Recursively find and remove the node holding value.
+// 6: Recursively find and remove the node holding value.
 //
 // When value is not found (node == nullptr), return nullptr without changing
 // removed.
@@ -124,12 +125,44 @@ bool BinarySearchTree::remove(int value)
 //
 // Always return node at the end so parent links stay intact.
 //
-BinarySearchTree::Node* BinarySearchTree::remove_(Node* node, int value,
-                                                   bool& removed)
+BinarySearchTree::Node* BinarySearchTree::remove_(Node* node, int value, bool& removed)
 {
-    // Your code here
+    //   Step 0: Base case — if node is null, return nullptr
+    if (!node) return nullptr;
+    //   Step 1: if value < node->data, recurse left
+    if (value < node->data) {
+        node->left = remove_(node->left, value, removed);
+    }
+    //   Step 2: if value > node->data, recurse right
+    else if (value > node->data) {
+        node->right = remove_(node->right, value, removed);
+    }
+    //   Step 3: value == node->data — FOUND IT, handle removal
+    else {
+        removed = true;
+        //     - Case 1 (leaf): delete node, return nullptr
+        if (!node->left && !node->right) {
+            delete node;
+            return nullptr;
+        }
+        //     - Case 2 (one child): delete node, return the child
+        if (!node->left) {
+            Node* child = node->right;
+            delete node;
+            return child;
+        }
+        if (!node->right) {
+            Node* child = node->left;
+            delete node;
+            return child;
+        }
+        //     - Case 3 (two children):
+        Node* successor = find_min_(node->right);
+        node->data = successor->data;
+        node->right = remove_(node->right, successor->data, removed);
 
-    return node; // placeholder — replace this with your implementation
+    }
+    return node;
 }
 
 // ---------------------------------------------------------------------------
