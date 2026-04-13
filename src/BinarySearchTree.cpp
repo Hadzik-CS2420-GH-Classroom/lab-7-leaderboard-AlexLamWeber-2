@@ -17,9 +17,9 @@
 //
 // TODO 1: Initialize root_ to nullptr so the tree starts empty.
 //
-BinarySearchTree::BinarySearchTree()
+BinarySearchTree::BinarySearchTree() : root_(nullptr)
 {
-    // Your code here
+    
 }
 
 // ---------------------------------------------------------------------------
@@ -32,7 +32,7 @@ BinarySearchTree::BinarySearchTree()
 //
 BinarySearchTree::~BinarySearchTree()
 {
-    // Your code here
+    clear();
 }
 
 // =============================================================================
