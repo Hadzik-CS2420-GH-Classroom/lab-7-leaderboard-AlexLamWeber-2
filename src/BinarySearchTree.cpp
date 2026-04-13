@@ -169,7 +169,7 @@ BinarySearchTree::Node* BinarySearchTree::remove_(Node* node, int value, bool& r
 // find_min_ (private helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 7: Return a pointer to the node with the smallest value in the
+// 7: Return a pointer to the node with the smallest value in the
 // subtree rooted at node.
 //
 // Hint: walk left until left == nullptr; that node is the minimum.
@@ -177,7 +177,9 @@ BinarySearchTree::Node* BinarySearchTree::remove_(Node* node, int value, bool& r
 //
 BinarySearchTree::Node* BinarySearchTree::find_min_(Node* node) const
 {
-    // Your code here
+    while (node->left) {
+        node = node->left;
+    }
 
     return node; // placeholder — replace this with your implementation
 }
