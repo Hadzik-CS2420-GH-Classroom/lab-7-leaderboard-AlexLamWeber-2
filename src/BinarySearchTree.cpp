@@ -15,7 +15,7 @@
 // BinarySearchTree (constructor)
 // ---------------------------------------------------------------------------
 //
-// TODO 1: Initialize root_ to nullptr so the tree starts empty.
+// 1: Initialize root_ to nullptr so the tree starts empty.
 //
 BinarySearchTree::BinarySearchTree() : root_(nullptr)
 {
@@ -26,7 +26,7 @@ BinarySearchTree::BinarySearchTree() : root_(nullptr)
 // ~BinarySearchTree (destructor)
 // ---------------------------------------------------------------------------
 //
-// TODO 2: Free all heap-allocated nodes to prevent memory leaks.
+// 2: Free all heap-allocated nodes to prevent memory leaks.
 //
 // Hint: call clear() — it already does the recursive cleanup.
 //
@@ -43,7 +43,7 @@ BinarySearchTree::~BinarySearchTree()
 // insert
 // ---------------------------------------------------------------------------
 //
-// TODO 3: Insert value into the BST. Ignore duplicates (do nothing if the
+// 3: Insert value into the BST. Ignore duplicates (do nothing if the
 // value is already present).
 //
 // Hint: delegate to insert_(root_, value) and assign the return value back
@@ -51,14 +51,14 @@ BinarySearchTree::~BinarySearchTree()
 //
 void BinarySearchTree::insert(int value)
 {
-    // Your code here
+    root_ = insert_(root_, value);
 }
 
 // ---------------------------------------------------------------------------
 // insert_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 4: Recursively find the correct position for value and insert a new
+// 4: Recursively find the correct position for value and insert a new
 // Node there.
 //
 // - Base case: node == nullptr → allocate and return a new Node(value)
@@ -69,9 +69,16 @@ void BinarySearchTree::insert(int value)
 //
 BinarySearchTree::Node* BinarySearchTree::insert_(Node* node, int value)
 {
-    // Your code here
+    if (!node) return new Node(value);
+    
+    if (value < node->data) {
+        node->left = insert_(node->left, value);
+    }
+    else if (value > node->data) {
+        node->right = insert_(node->right, value);
+    }
 
-    return node; // placeholder — replace this with your implementation
+    return node; 
 }
 
 // ---------------------------------------------------------------------------
