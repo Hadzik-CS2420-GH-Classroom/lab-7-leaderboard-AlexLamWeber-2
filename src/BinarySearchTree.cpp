@@ -188,7 +188,7 @@ BinarySearchTree::Node* BinarySearchTree::find_min_(Node* node) const
 // clear
 // ---------------------------------------------------------------------------
 //
-// TODO 8: Remove all nodes from the tree, resetting it to empty.
+// 8: Remove all nodes from the tree, resetting it to empty.
 //
 // Hint: call clear_(root_) to delete all nodes recursively, then set
 // root_ back to nullptr.
@@ -203,7 +203,7 @@ void BinarySearchTree::clear()
 // clear_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 9: Post-order deletion — delete left subtree, delete right subtree,
+// 9: Post-order deletion — delete left subtree, delete right subtree,
 // then delete node itself.
 //
 // Post-order is important here: delete children before the parent so you
@@ -228,22 +228,21 @@ void BinarySearchTree::clear_(Node* node)
 // search
 // ---------------------------------------------------------------------------
 //
-// TODO 10: Return true if value exists in the tree, false otherwise.
+// 10: Return true if value exists in the tree, false otherwise.
 //
 // Hint: delegate to search_(root_, value).
 //
 bool BinarySearchTree::search(int value) const
 {
-    // Your code here
-
-    return false; // placeholder
+    
+    return search_(root_, value);
 }
 
 // ---------------------------------------------------------------------------
 // search_ (private recursive helper)
 // ---------------------------------------------------------------------------
 //
-// TODO 11: Recursively search for value using the BST property.
+// 11: Recursively search for value using the BST property.
 //
 // - Base case: node == nullptr → value not found, return false
 // - If value == node->data → found, return true
@@ -252,22 +251,27 @@ bool BinarySearchTree::search(int value) const
 //
 bool BinarySearchTree::search_(Node* node, int value) const
 {
-    // Your code here
-
-    return false; // placeholder
+    if (!node) return false;
+    if (value == node->data) return true;
+    if (value < node->data) {
+        return search_(node->left, value);
+    }
+    else {
+        return search_(node->right, value);
+    }
 }
 
 // ---------------------------------------------------------------------------
 // is_empty
 // ---------------------------------------------------------------------------
 //
-// TODO 12: Return true if the tree has no nodes (root_ is nullptr).
+// 12: Return true if the tree has no nodes (root_ is nullptr).
 //
 bool BinarySearchTree::is_empty() const
 {
-    // Your code here
+    
 
-    return true; // placeholder
+    return root_ == nullptr;
 }
 
 // ---------------------------------------------------------------------------
