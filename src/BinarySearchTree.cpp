@@ -476,6 +476,7 @@ void BinarySearchTree::postorder() const
 //
 void BinarySearchTree::postorder_(Node* node) const
 {
+    if (!node) return;
     postorder_(node->left);
     postorder_(node->right);
     std::cout << node->data << " ";
