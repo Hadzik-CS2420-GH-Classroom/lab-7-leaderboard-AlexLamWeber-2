@@ -195,7 +195,8 @@ BinarySearchTree::Node* BinarySearchTree::find_min_(Node* node) const
 //
 void BinarySearchTree::clear()
 {
-    // Your code here
+    clear_(root_);
+    root_ = nullptr;
 }
 
 // ---------------------------------------------------------------------------
@@ -210,7 +211,13 @@ void BinarySearchTree::clear()
 //
 void BinarySearchTree::clear_(Node* node)
 {
-    // Your code here
+    if (!node) return;
+    clear_(node->left);
+    clear_(node->right);
+
+    delete node;
+    node = nullptr;
+    
 }
 
 // =============================================================================
